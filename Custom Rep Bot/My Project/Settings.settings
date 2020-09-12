@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="prefix" Type="System.String" Scope="User">
+      <Value Profile="(Default)">rp!</Value>
+    </Setting>
+    <Setting Name="botName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Custom Rep Bot</Value>
+    </Setting>
+    <Setting Name="botIcon" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://imgur.com/qcrFIxE.png</Value>
+    </Setting>
+    <Setting Name="serverID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">742222391203070032</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

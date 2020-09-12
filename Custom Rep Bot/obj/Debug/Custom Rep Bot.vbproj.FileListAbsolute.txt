@@ -1,0 +1,45 @@
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Custom Rep Bot.exe.config
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Custom Rep Bot.exe
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Custom Rep Bot.pdb
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Custom Rep Bot.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\obj\Debug\Custom Rep Bot.vbprojAssemblyReference.cache
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\obj\Debug\Custom_Rep_Bot.Resources.resources
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\obj\Debug\Custom Rep Bot.vbproj.GenerateResource.cache
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\obj\Debug\Custom Rep Bot.vbproj.CoreCompileInputs.cache
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\obj\Debug\Custom Rep Bot.exe
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\obj\Debug\Custom Rep Bot.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\obj\Debug\Custom Rep Bot.pdb
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Discord.Net.Commands.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Discord.Net.Core.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Discord.Net.Rest.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Discord.Net.Webhook.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Discord.Net.WebSocket.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\EntityFramework.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Collections.Immutable.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Data.SQLite.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Interactive.Async.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Linq.Async.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Discord.Net.Commands.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Discord.Net.Core.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Discord.Net.Rest.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Discord.Net.Webhook.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Discord.Net.WebSocket.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\EntityFramework.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Collections.Immutable.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Data.SQLite.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Interactive.Async.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Linq.Async.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Oni\source\repos\Custom Rep Bot\Custom Rep Bot\obj\Debug\Custom Rep Bot.vbproj.CopyComplete
