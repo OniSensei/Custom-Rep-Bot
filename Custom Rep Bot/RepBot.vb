@@ -34,7 +34,7 @@ Module RepBot
         ' Set thread
         Threading.Thread.CurrentThread.SetApartmentState(Threading.ApartmentState.STA)
 
-        Await _client.LoginAsync(TokenType.Bot, "NzI1OTAxNDU5NzgyMjM4MzAw.XvVeag.RdTFjHkfQqpEhMKP3XZHIp9SUAM")
+        Await _client.LoginAsync(TokenType.Bot, "NzUzNTE2MTA2NzgxODE4OTgy.X1nUjw.b2z_K00f5Qkl_1jOap-0s-Tu0vs")
 
         ' Wait for the client to start
         Await _client.StartAsync
@@ -363,6 +363,9 @@ Module RepBot
             ElseIf content.ToLower.StartsWith(prefix & "giveadmin") Then
                 If member.Roles.Any(Function(role) role.Permissions.Administrator.Equals(True)) Then
                     If message.MentionedUsers.Count > 0 Then
+                        If CheckUser(message.MentionedUsers.FirstOrDefault.Id) = False Then
+                            AddUser(message.MentionedUsers.FirstOrDefault.Id)
+                        End If
                         UpdatePermission(message.MentionedUsers.FirstOrDefault.Id, "100")
                         Dim builder As EmbedBuilder = New EmbedBuilder
                         builder.WithAuthor(My.Settings.botName, My.Settings.botIcon)
@@ -378,6 +381,9 @@ Module RepBot
                 ElseIf CheckPerm(author.Id) = 100 Then
                     If message.MentionedUsers.Count > 0 Then
                         UpdatePermission(message.MentionedUsers.FirstOrDefault.Id, "100")
+                        If CheckUser(message.MentionedUsers.FirstOrDefault.Id) = False Then
+                            AddUser(message.MentionedUsers.FirstOrDefault.Id)
+                        End If
                         Dim builder As EmbedBuilder = New EmbedBuilder
                         builder.WithAuthor(My.Settings.botName, My.Settings.botIcon)
                         builder.WithThumbnailUrl(My.Settings.botIcon)
@@ -402,6 +408,9 @@ Module RepBot
             ElseIf content.ToLower.StartsWith(prefix & "takeadmin") Then
                 If member.Roles.Any(Function(role) role.Permissions.Administrator.Equals(True)) Then
                     If message.MentionedUsers.Count > 0 Then
+                        If CheckUser(message.MentionedUsers.FirstOrDefault.Id) = False Then
+                            AddUser(message.MentionedUsers.FirstOrDefault.Id)
+                        End If
                         UpdatePermission(message.MentionedUsers.FirstOrDefault.Id, "0")
                         Dim builder As EmbedBuilder = New EmbedBuilder
                         builder.WithAuthor(My.Settings.botName, My.Settings.botIcon)
@@ -416,6 +425,9 @@ Module RepBot
                     End If
                 ElseIf CheckPerm(author.Id) = 100 Then
                     If message.MentionedUsers.Count > 0 Then
+                        If CheckUser(message.MentionedUsers.FirstOrDefault.Id) = False Then
+                            AddUser(message.MentionedUsers.FirstOrDefault.Id)
+                        End If
                         UpdatePermission(message.MentionedUsers.FirstOrDefault.Id, "0")
                         Dim builder As EmbedBuilder = New EmbedBuilder
                         builder.WithAuthor(My.Settings.botName, My.Settings.botIcon)
@@ -590,25 +602,29 @@ Module RepBot
                     If split.Count > 0 Then
                         Dim addrep As Integer = split(2)
                         If message.MentionedUsers.Count > 0 Then
+                            If CheckUser(message.MentionedUsers.FirstOrDefault.Id) = False Then
+                                AddUser(message.MentionedUsers.FirstOrDefault.Id)
+                            End If
+                            Dim menuser As SocketGuildUser = message.MentionedUsers.FirstOrDefault
                             If addrep > 0 Then
                                 If member.Roles.Any(Function(role) role.Permissions.Administrator.Equals(True)) Then
-                                    Dim userrep As Integer = UserQuery(author.Id, "userRep")
+                                    Dim userrep As Integer = UserQuery(menuser.Id, "userRep")
                                     Dim newrep As Integer = userrep + addrep
-                                    UpdateUser(author.Id, "userRep", newrep)
+                                    UpdateUser(menuser.Id, "userRep", newrep)
 
                                     Dim roleup As Boolean = False
                                     Dim newrole As String = GetRole(newrep)
-                                    Dim oldrole As String = UserQuery(author.Id, "userRole")
+                                    Dim oldrole As String = UserQuery(menuser.Id, "userRole")
                                     If RoleQuery(newrole, "repLimit") <= newrep Then
                                         If newrole <> oldrole Then
                                             roleup = True
-                                            UpdateUser(author.Id, "userRole", newrole)
+                                            UpdateUser(menuser.Id, "userRole", newrole)
                                             Dim role = _client.GetGuild(My.Settings.serverID).Roles.FirstOrDefault(Function(x) x.Name = newrole)
-                                            Await member.AddRoleAsync(role)
+                                            Await menuser.AddRoleAsync(role)
 
                                             If oldrole <> "None" Then
                                                 Dim subrole = _client.GetGuild(My.Settings.serverID).Roles.FirstOrDefault(Function(x) x.Name = oldrole)
-                                                Await member.RemoveRoleAsync(subrole)
+                                                Await menuser.RemoveRoleAsync(subrole)
                                             End If
                                         End If
                                     End If
@@ -618,7 +634,7 @@ Module RepBot
                                     builder.WithThumbnailUrl(My.Settings.botIcon)
                                     builder.WithColor(219, 172, 69)
 
-                                    builder.WithDescription("You have added " & addrep & " reputation to " & message.MentionedUsers.FirstOrDefault.Username & "!")
+                                    builder.WithDescription("You have added " & addrep & " reputation to " & menuser.Username & "!")
 
                                     If roleup = True Then
                                         builder.AddField("Role has been granted!", "`" & newrole & "`", True)
@@ -628,23 +644,23 @@ Module RepBot
 
                                     Await message.Channel.SendMessageAsync("", False, builder.Build)
                                 ElseIf CheckPerm(author.Id) = 100 Then
-                                    Dim userrep As Integer = UserQuery(author.Id, "userRep")
+                                    Dim userrep As Integer = UserQuery(menuser.Id, "userRep")
                                     Dim newrep As Integer = userrep + addrep
-                                    UpdateUser(author.Id, "userRep", newrep)
+                                    UpdateUser(menuser.Id, "userRep", newrep)
 
                                     Dim roleup As Boolean = False
                                     Dim newrole As String = GetRole(newrep)
-                                    Dim oldrole As String = UserQuery(author.Id, "userRole")
+                                    Dim oldrole As String = UserQuery(menuser.Id, "userRole")
                                     If RoleQuery(newrole, "repLimit") <= newrep Then
                                         If newrole <> oldrole Then
                                             roleup = True
-                                            UpdateUser(author.Id, "userRole", newrole)
+                                            UpdateUser(menuser.Id, "userRole", newrole)
                                             Dim role = _client.GetGuild(My.Settings.serverID).Roles.FirstOrDefault(Function(x) x.Name = newrole)
-                                            Await member.AddRoleAsync(role)
+                                            Await menuser.AddRoleAsync(role)
 
                                             If oldrole <> "None" Then
                                                 Dim subrole = _client.GetGuild(My.Settings.serverID).Roles.FirstOrDefault(Function(x) x.Name = oldrole)
-                                                Await member.RemoveRoleAsync(subrole)
+                                                Await menuser.RemoveRoleAsync(subrole)
                                             End If
                                         End If
                                     End If
@@ -654,7 +670,7 @@ Module RepBot
                                     builder.WithThumbnailUrl(My.Settings.botIcon)
                                     builder.WithColor(219, 172, 69)
 
-                                    builder.WithDescription("You have added " & addrep & " reputation to " & message.MentionedUsers.FirstOrDefault.Username & "!")
+                                    builder.WithDescription("You have added " & addrep & " reputation to " & menuser.Username & "!")
 
                                     If roleup = True Then
                                         builder.AddField("Role has been granted!", "`" & newrole & "`", True)
@@ -685,27 +701,31 @@ Module RepBot
                     If split.Count > 0 Then
                         Dim addrep As Integer = split(2)
                         If message.MentionedUsers.Count > 0 Then
+                            If CheckUser(message.MentionedUsers.FirstOrDefault.Id) = False Then
+                                AddUser(message.MentionedUsers.FirstOrDefault.Id)
+                            End If
+                            Dim menuser As SocketGuildUser = message.MentionedUsers.FirstOrDefault
                             If addrep > 0 Then
                                 If member.Roles.Any(Function(role) role.Permissions.Administrator.Equals(True)) Then
-                                    Dim userrep As Integer = UserQuery(author.Id, "userRep")
+                                    Dim userrep As Integer = UserQuery(menuser.Id, "userRep")
                                     Dim newrep As Integer = userrep - addrep
                                     If newrep >= 100 Then
-                                        UpdateUser(author.Id, "userRep", newrep)
+                                        UpdateUser(menuser.Id, "userRep", newrep)
 
                                         Dim roleup As Boolean = False
                                         Dim newrole As String = LowestRole(newrep)
-                                        Dim oldrole As String = UserQuery(author.Id, "userRole")
+                                        Dim oldrole As String = UserQuery(menuser.Id, "userRole")
                                         Dim oldrolerep As Integer = RoleQuery(oldrole, "repLimit")
 
                                         If oldrolerep > newrep Then
                                             roleup = True
-                                            UpdateUser(author.Id, "userRole", newrole)
+                                            UpdateUser(menuser.Id, "userRole", newrole)
                                             Dim role = _client.GetGuild(My.Settings.serverID).Roles.FirstOrDefault(Function(x) x.Name = newrole)
-                                            Await member.AddRoleAsync(role)
+                                            Await menuser.AddRoleAsync(role)
 
                                             If oldrole <> "None" Then
                                                 Dim subrole = _client.GetGuild(My.Settings.serverID).Roles.FirstOrDefault(Function(x) x.Name = oldrole)
-                                                Await member.RemoveRoleAsync(subrole)
+                                                Await menuser.RemoveRoleAsync(subrole)
                                             End If
                                         End If
 
@@ -714,7 +734,7 @@ Module RepBot
                                         builder.WithThumbnailUrl(My.Settings.botIcon)
                                         builder.WithColor(219, 172, 69)
 
-                                        builder.WithDescription("You have removed " & addrep & " reputation from " & message.MentionedUsers.FirstOrDefault.Username & "!")
+                                        builder.WithDescription("You have removed " & addrep & " reputation from " & menuser.Username & "!")
 
                                         If roleup = True Then
                                             builder.AddField("Role has been removed!", "`" & oldrole & "`", True)
@@ -725,22 +745,22 @@ Module RepBot
                                         Await message.Channel.SendMessageAsync("", False, builder.Build)
                                     Else
                                         If newrep <= 0 Then newrep = 0
-                                        UpdateUser(author.Id, "userRep", newrep)
+                                        UpdateUser(menuser.Id, "userRep", newrep)
 
                                         Dim roleup As Boolean = False
                                         Dim newrole As String = LowestRole(newrep)
-                                        Dim oldrole As String = UserQuery(author.Id, "userRole")
+                                        Dim oldrole As String = UserQuery(menuser.Id, "userRole")
                                         Dim oldrolerep As Integer = RoleQuery(oldrole, "repLimit")
 
-                                        If oldrole <> "None" Then
-                                            If oldrolerep > newrep Then
-                                                roleup = True
-                                                UpdateUser(author.Id, "userRole", newrole)
-                                                Dim role = _client.GetGuild(My.Settings.serverID).Roles.FirstOrDefault(Function(x) x.Name = newrole)
-                                                Await member.AddRoleAsync(role)
+                                        If oldrolerep > newrep Then
+                                            roleup = True
+                                            UpdateUser(menuser.Id, "userRole", newrole)
+                                            Dim role = _client.GetGuild(My.Settings.serverID).Roles.FirstOrDefault(Function(x) x.Name = newrole)
+                                            Await menuser.AddRoleAsync(role)
 
+                                            If oldrole <> "None" Then
                                                 Dim subrole = _client.GetGuild(My.Settings.serverID).Roles.FirstOrDefault(Function(x) x.Name = oldrole)
-                                                Await member.RemoveRoleAsync(subrole)
+                                                Await menuser.RemoveRoleAsync(subrole)
                                             End If
                                         End If
 
@@ -749,7 +769,7 @@ Module RepBot
                                         builder.WithThumbnailUrl(My.Settings.botIcon)
                                         builder.WithColor(219, 172, 69)
 
-                                        builder.WithDescription("You have removed " & addrep & " reputation from " & message.MentionedUsers.FirstOrDefault.Username & "!")
+                                        builder.WithDescription("You have removed " & addrep & " reputation from " & menuser.Username & "!")
 
                                         If roleup = True Then
                                             builder.AddField("Role has been removed!", "`" & oldrole & "`", True)

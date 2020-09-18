@@ -1,5 +1,4 @@
-﻿Imports System.Text
-Imports System.Text.RegularExpressions
+﻿Imports System.Text.RegularExpressions
 
 Module RepFunc
     Function RemoveWhitespace(fullString As String) As String

@@ -92,7 +92,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("742222391203070032")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("752859093047181433")>  _
         Public Property serverID() As String
             Get
                 Return CType(Me("serverID"),String)

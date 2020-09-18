@@ -202,7 +202,7 @@ Module RepSQL
 
         Colorize("[SQL]       " & sqlite_cmd.CommandText)
 
-        Return RoleCount
+        Return rc
     End Function
 
     Public Function RoleQuery(ByVal roleName As String, ByVal clm As String) As String
